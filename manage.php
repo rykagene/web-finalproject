@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/manage.js"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
@@ -27,7 +27,7 @@
    
   </head>
 
-<style>
+<!-- <style>
     
   body {
     font-family: 'Netflix Sans';
@@ -110,40 +110,14 @@ text-decoration: underline;
 
   
  
-</style>
+</style> -->
  
- 
-  <script>
-  // function that shows suggestion kapag nag type ka sa search box.
-  function showHint(title) {
-    // if textbox is empty
-    if (title.length == 0) {
-        document.getElementById("show").style.display = "none";
-    } else {
-        // create an object
-        // XMLHttpRequest() is a javascript function that is responsible for communication of client and server asyncrhonously.
-        http = new XMLHttpRequest();
 
-        http.onreadystatechange = function() {
-           
-            if (http.readyState == 4 && http.status == 200) {
-                $("#suggestion_div").html(http.responseText); 
-               
-
-
-            } else {
-                $("#suggestion_div").html("Loading...");
-
-
-            }
-        };
-        http.open("GET", "getMovies.php?q=" + title, true);
-        http.send();
-    }
-}
-  </script>
   <body class="">
-
+  <script src="assets/js/script.js"></script>
+  <script>
+    
+  </script>
     <br>
     
     <div class="container">
@@ -247,10 +221,6 @@ text-decoration: underline;
       </form>
       <!-- <a href="#update" data-bs-toggle="modal" class="btn btn-sm btn-danger"><i class="fas fa-edit" style="color: #fff;"></i>&nbsp;Edit</a> -->
 
-
-
-
-
       </div>
       
       <div class="col">
@@ -260,65 +230,95 @@ text-decoration: underline;
 </form>
 
 <script>
-$('.delete-btn').click(function(e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: 'red',
-        cancelButtonColor: 'lightgray',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                type: "POST",
-                url: "deleteProcess.php",
-                data: { id: id },
-                success: function(data) {
-                    Swal.fire({
-                        title: 'Deleted!',
-                        text: 'Your item has been deleted.',
-                        icon: 'success',
-                        confirmButtonColor: 'red',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        // Reload page after success message
-                        location.reload();
-                    });
-                },
-                error: function() {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'There was an error deleting your item.',
-                        icon: 'error',
-                        confirmButtonColor: 'red',
-                        confirmButtonText: 'OK'
-                    });
-                }
-            });
-        }
-    })
-});
-</script>
-<script>
-function validateForm() {
-  var selectedGenres = $("#selected-genres-input").val();
-  if (selectedGenres.trim() == "") {
-    $("#selected-genres").tooltip({
-      title: "Please select at least one genre.",
-      placement: "top",
-      trigger: "manual"
-    }).tooltip("show");
-    setTimeout(function() {
-      $("#selected-genres").tooltip("hide");
-    }, 2000);
-    return false;
-  }
-  return true;
-}
+
+// $(document).ready(function() {
+//     // Add hover effect to card
+//     $('.card').hover(function() {
+//       $(this).find('.card-body').removeClass('d-none');
+//       $(this).addClass('card-hovered');
+//     }, function() {
+//       $(this).find('.card-body').addClass('d-none')
+//       $(this).removeClass('card-hovered');
+//     });
+//     $('.card').hover(function() {
+//     $(this).find('.card-body').css('background-color', 'rgba(0, 0, 0, 0.8)');
+//   });
+//   $('.accordion-trigger').click(function() {
+//     $('.accordion-content').show();
+    
+//   });
+//   $('#filter').click(function() {
+//     $('.displayCards').removeClass('col-md-12').addClass('col-md-4',1000);
+//   });
+//   $('#filter2').click(function() {
+//     $('.displayCards').removeClass('col-md-4').addClass('col-md-12',1000);
+//   });
+  
+//   $('.delete-btn').click(function(e) {
+//     e.preventDefault();
+//     var id = $(this).data('id');
+//     Swal.fire({
+//         title: 'Are you sure?',
+//         text: "You won't be able to revert this!",
+//         icon: 'warning',
+//         showCancelButton: true,
+//         confirmButtonColor: 'red',
+//         cancelButtonColor: 'lightgray',
+//         confirmButtonText: 'Yes, delete it!'
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             $.ajax({
+//                 type: "POST",
+//                 url: "deleteProcess.php",
+//                 data: { id: id },
+//                 success: function(data) {
+//                     Swal.fire({
+//                         title: 'Deleted!',
+//                         text: 'Your item has been deleted.',
+//                         icon: 'success',
+//                         confirmButtonColor: 'red',
+//                         confirmButtonText: 'OK'
+//                     }).then(() => {
+//                         // Reload page after success message
+//                         location.reload();
+//                     });
+//                 },
+//                 error: function() {
+//                     Swal.fire({
+//                         title: 'Error!',
+//                         text: 'There was an error deleting your item.',
+//                         icon: 'error',
+//                         confirmButtonColor: 'red',
+//                         confirmButtonText: 'OK'
+//                     });
+//                 }
+//             });
+//         }
+//     })
+// });
+
+// });
+
+
+
+
+
+// function validateForm() {
+//   var selectedGenres = $("#selected-genres-input").val();
+//   if (selectedGenres.trim() == "") {
+//     $("#selected-genres").tooltip({
+//       title: "Please select at least one genre.",
+//       placement: "top",
+//       trigger: "manual"
+//     }).tooltip("show");
+//     setTimeout(function() {
+//       $("#selected-genres").tooltip("hide");
+//     }, 2000);
+//     return false;
+//   }
+//   return true;
+// }
+
 
 </script>
 
@@ -339,32 +339,32 @@ function validateForm() {
   
 
 <script>
-  $(document).ready(function() {
-    // Add hover effect to card
-    $('.card').hover(function() {
-      $(this).find('.card-body').removeClass('d-none');
-      $(this).addClass('card-hovered');
-    }, function() {
-      $(this).find('.card-body').addClass('d-none')
-      $(this).removeClass('card-hovered');
-    });
-    $('.card').hover(function() {
-    $(this).find('.card-body').css('background-color', 'rgba(0, 0, 0, 0.8)');
-  });
-  $('.accordion-trigger').click(function() {
-    $('.accordion-content').show();
+  // $(document).ready(function() {
+  //   // Add hover effect to card
+  //   $('.card').hover(function() {
+  //     $(this).find('.card-body').removeClass('d-none');
+  //     $(this).addClass('card-hovered');
+  //   }, function() {
+  //     $(this).find('.card-body').addClass('d-none')
+  //     $(this).removeClass('card-hovered');
+  //   });
+  //   $('.card').hover(function() {
+  //   $(this).find('.card-body').css('background-color', 'rgba(0, 0, 0, 0.8)');
+  // });
+  // $('.accordion-trigger').click(function() {
+  //   $('.accordion-content').show();
     
-  });
-  $('#filter').click(function() {
-    $('.displayCards').removeClass('col-md-12').addClass('col-md-4',1000);
-  });
-  $('#filter2').click(function() {
-    $('.displayCards').removeClass('col-md-4').addClass('col-md-12',1000);
-  });
+  // });
+  // $('#filter').click(function() {
+  //   $('.displayCards').removeClass('col-md-12').addClass('col-md-4',1000);
+  // });
+  // $('#filter2').click(function() {
+  //   $('.displayCards').removeClass('col-md-4').addClass('col-md-12',1000);
+  // });
 
 
     
-  });
+  // });
 
  
 
@@ -373,6 +373,116 @@ function validateForm() {
 
 
 
+
+  // function that shows suggestion kapag nag type ka sa search box.
+  function showHint(title) {
+    // if textbox is empty
+   {
+        // create an object
+        // XMLHttpRequest() is a javascript function that is responsible for communication of client and server asyncrhonously.
+        http = new XMLHttpRequest();
+
+        http.onreadystatechange = function() {
+           
+            if (http.readyState == 4 && http.status == 200) {
+ 
+                $("#suggestion_div").html(http.responseText); 
+                
+           
+
+
+            } else {
+                $("#suggestion_div").html("Loading...");
+
+
+            }
+        };
+        http.open("GET", "getMovies.php?q=" + title, true);
+        http.send();
+    }
+}
+// function checkTitle() {
+// 		var netflixTitle = document.getElementById("inputTitle").value;
+// 		if (netflixTitle.length == 0) {
+// 			document.getElementById("titlePrompt").innerHTML = "";
+// 		}
+// 		else {
+// 			http = new XMLHttpRequest();
+// 				http.onreadystatechange = function() {  
+// 					if (http.readyState == 4 && http.status == 200) {
+// 						document.getElementById("titlePrompt").innerHTML = http.responseText;
+// 					}
+// 					else {
+// 						document.getElementById("titlePrompt").innerHTML = "Loading...";
+// 					}
+// 				};
+// 				http.open("GET", "validateTitle.php?q=" + netflixTitle, true);
+// 				http.send();
+// 		}
+		
+// 	}
+
+// function checkTitle() {
+//     var netflixTitle = document.getElementById("inputTitle").value;
+//     if (netflixTitle.length == 0) {
+//         document.getElementById("titlePrompt").innerHTML = "";
+//     } else {
+//         var http = new XMLHttpRequest();
+//         http.onreadystatechange = function() {  
+//             if (http.readyState == 4 && http.status == 200) {
+//                 var responseText = http.responseText.trim();
+//                 if (responseText === "exists") {
+//                     document.getElementById("titlePrompt").innerHTML = "Title already exists!";
+//                     document.getElementById("createForm").addEventListener("submit", function(event) {
+//                         event.preventDefault();
+//                     });
+//                 } else {
+//                     document.getElementById("titlePrompt").innerHTML = "";
+//                     document.getElementById("createForm").removeEventListener("submit", function(event) {
+//                         event.preventDefault();
+//                     });
+//                 }
+//             } else {
+//                 document.getElementById("titlePrompt").innerHTML = "Loading...";
+//             }
+//         };
+//         http.open("GET", "validateTitle.php?q=" + netflixTitle, true);
+//         http.send();
+//     }
+// }
+
+// function validateForm() {
+//     var titlePrompt = document.getElementById("titlePrompt").innerHTML.trim();
+//     if (titlePrompt !== "") {
+//         return false;
+//     }
+//     // Additional form validation here
+//     return true;
+// }
+
+function checkTitle() {
+  var netflixTitle = document.getElementById("inputTitle").value;
+  if (netflixTitle.length == 0) {
+    document.getElementById("titlePrompt").innerHTML = "";
+  } else {
+    http = new XMLHttpRequest();
+    http.onreadystatechange = function() {  
+      if (http.readyState == 4 && http.status == 200) {
+        var titlePrompt = document.getElementById("titlePrompt");
+        titlePrompt.innerHTML = http.responseText;
+        var existingTitle = document.getElementById("existingTitle");
+        if (existingTitle) {
+          // Disable the form's submit button if an existing title is found
+          var submitButton = document.getElementById("createBtn");
+          alert('disabled');
+          createBtn.disabled = true;
+        }
+      }
+    };
+    http.open("GET", "validateTitle.php?q=" + netflixTitle, true);
+    http.send();
+  }
+}
 
 
 </script>
@@ -384,7 +494,7 @@ function validateForm() {
       //show the modal
       include('createPage.php');
       // include('update.php');
-      include('delete.php'); 
+      // include('delete.php'); 
     ?>
   <?php 
     }
@@ -398,7 +508,7 @@ function validateForm() {
         </div>
     </div>
 </div>
-<?php include('create.php'); ?>
+
 
 <!-- library for table sorting -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

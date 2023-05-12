@@ -22,8 +22,8 @@
 		if (strtolower($createTitle)==strtolower($netflixTitle)) 
 		{									
 			?>
-			<p style="color:red;" >
-				<?php echo  $createTitle . " already exist."?>
+			<p id="existingTitle" class="small" style="color:red;" >
+				Sorry,  <b><?php echo  $createTitle ?></b> is already added. Try different title.
 			</p>
 			<?php
 			break;

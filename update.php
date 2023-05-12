@@ -157,7 +157,8 @@ if($update_id == $id) {
             <label for="idcode">ID </label>
           </div>
           <div class="form-floating mb-3">
-            <input id="inputTitle" onkeyup="checkTitle()" type="text" class="form-control" value="<?php echo $netflixTitle?>"  name="netflixTitle" required="required" placeholder="Title">
+          <input id="inputTitle" onkeyup="checkTitle()" type="text" class="form-control" name="netflixTitle" required="required" placeholder="Title" autocomplete="off" value="<?php echo $netflixTitle?>">
+        
             <label for="inputTitle" class="form-label">Title</label>
             <div id="titlePrompt"></div>
           </div>
@@ -184,7 +185,7 @@ if($update_id == $id) {
 		  
       
 	        <!-- genre div -->
-			<div class="form-floating mb-3">
+			    <div class="form-floating mb-3">
                 <div class="mb-3">
                 <input type="hidden" id="selected-genres-input" class="d-none"name="selectedGenres" required="required">
 				
@@ -195,22 +196,17 @@ if($update_id == $id) {
                     
                 </div>
                 <div class="mb-3">
-                    <!-- <label for="genres" class="form-label">Available Genres:</label> -->
                     <div id="genres" class="">
-                            <span class="badge rounded-pill bg-primary me-1" data-value="Drama">Drama</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Thriller">Thriller</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Comedy">Comedy</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Fantasy">Fantasy</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Romance">Romance</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Science Fiction">Science Fiction</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Adventure">Adventure</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Sports">Sports</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Action">Action</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Western">Western</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Horror">Horror</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Musical">Musical</span>
-                    <span class="badge rounded-pill bg-primary me-1" data-value="Mystery">Mystery</span>
-                  
+                    <?php
+                    $genres = array("Drama", "Thriller", "Comedy", "Fantasy", "Romance", 
+                    "Science Fiction", "Adventure", "Sports", "Action", "Western", "Horror", 
+                    "Musical", "Mystery");
+
+                    foreach ($genres as $genre) {
+                        echo '<span class="badge rounded-pill bg-primary me-1" data-value="' . $genre . '">' . $genre . '</span>';
+                    }
+                    ?>
+
                     </div>
                 </div>
           </div>

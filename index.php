@@ -142,7 +142,7 @@
     ?>
 
 
-<div class="container">
+<div class="container-fluid">
   
 <div id="movie-details" class=" text-white p-4 m-5">
   <!-- Movie details will be displayed here -->
@@ -177,7 +177,7 @@
             }
             ?>
             <div class="col-6 col-md-4 col-lg-2">
-            <div class="card image rounded outline-0 border-0" data-genre="<?php echo $genre; ?>" data-hours-viewed="<?php echo $hoursViewed; ?>" data-directed-by="<?php echo $directedBy; ?>" data-main-cast="<?php echo $mainCast; ?>" data-date-released="<?php echo date('F j, Y', strtotime($dateReleased)); ?>">
+            <div class="card image rounded outline-0 border-0" data-genre="<?php echo $genre; ?>" data-hours-viewed="<?php echo $hoursViewed; ?>" data-directed-by="<?php echo $directedBy; ?>" data-main-cast="<?php echo $mainCast; ?>" data-date-released="<?php echo date('F j, Y', strtotime($dateReleased)); ?>" data-top="<?php echo $top; ?>">
 
 
 
@@ -198,10 +198,10 @@
           }
         ?>
       </div>
-      <a class="carousel-control-prev bg-transparent w-aut" href="#carousel" role="button" data-bs-slide="prev">
+      <a class="carousel-control-prev " href="#carousel" role="button" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       </a>
-      <a class="carousel-control-next bg-transparent w-aut" href="#carousel" role="button" data-bs-slide="next">
+      <a class="carousel-control-next " href="#carousel" role="button" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
       </a>
     </div>
@@ -219,14 +219,23 @@
     var directedBy = $(this).data('directed-by');
     var mainCast = $(this).data('main-cast');
     var dateReleased = $(this).data('date-released');
+    var top = $(this).data('top');
+
+    // time formatter
+    var formattedHoursViewed = (hoursViewed >= 1e3 && hoursViewed < 1e6) ? (hoursViewed / 1e3).toLocaleString(undefined, {maximumFractionDigits:1}) + 'K' : (hoursViewed >= 1e6 && hoursViewed < 1e9) ? (hoursViewed / 1e6).toLocaleString(undefined, {maximumFractionDigits:1}) + 'M' : (hoursViewed >= 1e9) ? (hoursViewed / 1e9).toLocaleString(undefined, {maximumFractionDigits:1}) + 'B' : hoursViewed.toLocaleString();
+
+
+
     
 // Create HTML to display movie details
-var html = '<h1 id="top_title">' + netflixTitle + '</h1>' +
-           '<p>' + genre + '</p>' +
-           '<p>' + Number(hoursViewed).toLocaleString() + ' hours viewed' +'</p>' +
-           '<p> Directed by: ' + directedBy + '</p>' +
+var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
+          '<h1 id="top_title">' + netflixTitle + '</h1>' +
+           '<p>' + genre + ' | '+ formattedHoursViewed + ' hours views' +'</p>' +
+          
            '<p> Starring ' + mainCast + '</p>' +
+           '<p> Directed by: ' + directedBy + '</p>' +
            '<p> Released on ' + dateReleased + '</p>';
+          
 
 
     
@@ -251,33 +260,33 @@ var html = '<h1 id="top_title">' + netflixTitle + '</h1>' +
 
 <script>
 
-  // function that shows suggestion kapag nag type ka sa search box.
-  function showHint(title) {
-    // if textbox is empty
-   {
-        // create an object
-        // XMLHttpRequest() is a javascript function that is responsible for communication of client and server asyncrhonously.
-        http = new XMLHttpRequest();
+//   // function that shows suggestion kapag nag type ka sa search box.
+//   function showHint(title) {
+//     // if textbox is empty
+//    {
+//         // create an object
+//         // XMLHttpRequest() is a javascript function that is responsible for communication of client and server asyncrhonously.
+//         http = new XMLHttpRequest();
 
-        http.onreadystatechange = function() {
+//         http.onreadystatechange = function() {
            
-            if (http.readyState == 4 && http.status == 200) {
+//             if (http.readyState == 4 && http.status == 200) {
  
-                $("#suggestion_div").html(http.responseText); 
+//                 $("#suggestion_div").html(http.responseText); 
                 
            
 
 
-            } else {
-                $("#suggestion_div").html("Loading...");
+//             } else {
+//                 $("#suggestion_div").html("Loading...");
 
 
-            }
-        };
-        http.open("GET", "getMovies.php?q=" + title, true);
-        http.send();
-    }
-}
+//             }
+//         };
+//         http.open("GET", "getMovies.php?q=" + title, true);
+//         http.send();
+//     }
+// }
   </script>
 
 
@@ -291,7 +300,7 @@ var html = '<h1 id="top_title">' + netflixTitle + '</h1>' +
 
         include('createPage.php');
         // include('update.php');
-        include('delete.php');
+        // include('delete.php');
         ?>
     
     </div>

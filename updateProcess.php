@@ -1,3 +1,9 @@
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="assets/css/netflix-fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<body>
 <?php
 $xml = new domdocument("1.0");
 // formatting
@@ -106,11 +112,22 @@ foreach ($netflixOriginals as $topNetflixOriginals)
             $xml->getElementsByTagName("netflixOriginals")->item(0)->replaceChild($newNode, $oldNode);
             $xml->save("BSIT3EG1G3.xml");
             // prompt
-            echo '<script>alert("update success")</script>';
+        
+            echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'; // include SweetAlert2 JS file
+            echo '<script>';
+            echo 'Swal.fire({
+                    title: "Success!",
+                    text: "Update successfully!",
+                    icon: "success",
+                    showCancelButton: false,
+                    target: "body",
+                    confirmButtonText: "OK",
+                    confirmButtonColor: "red",
+                }).then(() => {
+                    window.location.href = "manage.php"; // redirect to homepage
+                });';
+            echo '</script>';
     
-            // back to homepage
-             header('refresh:0;url=index.php');
-            // echo '<script>alert("similar top number, it must be not similar to istelf.")</script>';
         
        
     }
@@ -120,3 +137,4 @@ if ($flag == 0) {
     echo "Modification failed... <a href='index.php'>Back</a>";
 }
 ?>
+</body>
