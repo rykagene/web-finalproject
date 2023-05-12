@@ -95,22 +95,21 @@
               <div class="displayCards col-md-4 col-sm-6 mb-4">
                 <div id="card" class="card border-0 netflix-card">
 
-                  <img src="data:image;base64,<?php echo $picture; ?>" class="card-img-top"
-                    alt="<?php echo $netflixTitle; ?>">
-
-                  <div class="card-body d-none position-absolute start-0 pt-5  text-center text-white w-100 h-100">
-                    <h4 class="card-title font-weight-bold ">
-                      <?php echo $netflixTitle; ?>
-                    </h4>
-                    <p class="card-text">
-                      <?php echo $genre; ?>
-                    </p>
-
-                    <form method="GET" action="view.php">
-                      <input type="hidden" name="view_id" value="<?php echo $id; ?>">
-                      <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-circle-info"
-                          style="color: #fff;"></i>&nbsp; View Details</a>
-                    </form>
+                  <img src="data:image;base64,<?php echo $picture; ?>" class="card-img-top" alt="<?php echo $netflixTitle; ?>">
+    
+                  <div class="card-body d-none position-absolute start-0 pt-4  text-center text-white w-100 h-100">
+                    <h4 class="card-title font-weight-bold "><?php echo $netflixTitle; ?></h4>
+                    <p class="card-text"><?php echo $genre; ?></p>
+      
+                    <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1"> More Details</button>
+      
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                      <p></p> 
+                      <p class="card-text">Hours Viewed: <?php echo $hoursViewed . ' views'?></p>
+                      <p class="card-text">Directed by: <?php echo $directedBy; ?></p>
+                      <p class="card-text">Cast: <?php echo $mainCast; ?></p>
+                      <p class="card-text">Date Released: <?php echo $dateReleased; ?></p>
+                    </div>
                   </div>
                 </div>
               </div>
