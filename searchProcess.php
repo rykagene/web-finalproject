@@ -80,7 +80,7 @@ text-decoration: underline;
 
 <br>
 
-<a><i onclick="history.back()"class="fa-solid fa-arrow-left fa-2xl" style="color: #ffffff; cursor:pointer"></i></a><br><br>
+<a><i onclick="history.back()"class="fa-solid fa-arrow-left fa-2xl m-4" style="color: #ffffff; cursor:pointer"></i></a><br><br>
 <div class="container">
    
    <h1 id="top_title" class="text-left"><b>Search</b></h1>
@@ -160,9 +160,9 @@ text-decoration: underline;
       <h4 class="card-title font-weight-bold "><?php echo $netflixTitle; ?></h4>
       <p class="card-text"><?php echo $genre; ?></p>
       
-            <button class="accordion-trigger collapse show btn btn-danger" type="button" data-bs-toggle="collapse"> More Details</button>
+            <button class="accordion-trigger btn btn-danger" type="button" data-bs-toggle="collapse"> More Details</button>
       
-            <div class="accordion-content collapse" style="display:none">
+            <div class="accordion-content collapse show" style="display:none">
               <p></p>
               <p class="card-text">Hours Viewed: <?php echo $hoursViewed . ' views'?></p>
               <p class="card-text">Directed by: <?php echo $directedBy; ?></p>
