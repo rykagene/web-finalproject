@@ -83,19 +83,18 @@ text-decoration: underline;
 <a><i onclick="history.back()"class="fa-solid fa-arrow-left fa-2xl" style="color: #ffffff; cursor:pointer"></i></a><br><br>
 <div class="container">
    
-   <h1 id="top_title" class="text-left"><b>Manage </b></h1>
+   <h1 id="top_title" class="text-left"><b>Search</b></h1>
    <div class="row">
        <div class="col">
   
    <div class="d-flex justify-content-end">
-   <a href="index.php" type="button" class="btn btn-danger m-1"><i class="fa-solid fa-home"></i> Home</a>
-   <!-- CREATE -->
-     <button type="button" class="btn btn-danger  m-1" data-bs-toggle="modal" data-bs-target="#create"><i class="fa-solid fa-plus"></i> Add</button>
-     &nbsp; 
+   <a href="index.php" type="button" class="btn btn-danger"><i class="fa-solid fa-home"></i> Home</a>
+   &nbsp; &nbsp; &nbsp; 
+    
      <!-- SEARCH --> 
       <form action="searchProcess.php" method="POST">
-               <div class="input-group ">
-               <input id="searchBox" type="text" name="code" class="form-control bg-dark rounded-pill border-0 text-white" onkeyup="showHint(this.value)" required="required" autocomplete="off" placeholder="Search any movie/series title">
+               <div class="input-group">
+               <input id="searchBox" type="text" name="code" class="form-control bg-dark rounded-pill border-0 text-white" onkeyup="showHint(this.value)" autocomplete="off" placeholder="Search movie/series title">
 
    <span class="input-group-append">
                    <button class="btn btn-secondary bg-dark border-0 border rounded-pill ms-n5" type="button">
@@ -112,7 +111,8 @@ text-decoration: underline;
    </div>   
 
         <!--data -->
-    
+  
+                <div class="row m-4">
                 <?php
                 
                 $xml = new domdocument("1.0");
@@ -160,30 +160,10 @@ text-decoration: underline;
       <h4 class="card-title font-weight-bold "><?php echo $netflixTitle; ?></h4>
       <p class="card-text"><?php echo $genre; ?></p>
       
-     <div class="row">
-     <div class="col"></div>
-      <div class="col"> 
-
-      <form method="GET" action="update.php">
-        <input type="hidden" name="update_id" value="<?php echo $id; ?>">
-        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-edit" style="color: #fff;"></i>&nbsp;Edit</a>
-      </form>
-      <!-- <a href="#update" data-bs-toggle="modal" class="btn btn-sm btn-danger"><i class="fas fa-edit" style="color: #fff;"></i>&nbsp;Edit</a> -->
-
-
-
-
-
-      </div>
-      
-      <div class="col">
-      <form method="post" action="deleteProcess.php">
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this item?')"><i class="fas fa-trash" style="color: #fff;"></i>&nbsp;Delete</a>
-      </form>
-      </div>
-      <div class="col"></div>
-     </div>
+      <form method="GET" action="view.php">
+        <input type="hidden" name="view_id" value="<?php echo $id; ?>">
+        <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-circle-info" style="color: #fff;"></i>&nbsp; View Details</a>
+      </form> 
       
     </div>
 
@@ -204,10 +184,9 @@ text-decoration: underline;
             //use include() method to integrate other pages to this page
             //show the modal or popup
             // include('update.php');
-            include('delete.php'); 
             include('createPage.php'); 
             ?>
-
+          </div>
         </div>
     </div>
 </div>
