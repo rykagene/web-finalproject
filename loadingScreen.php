@@ -1,13 +1,12 @@
 <!doctype html>
-  <head>
 
-    <link rel="stylesheet" href="assets/css/loadingScreen.css">
-   
-  </head>
+<head>
+  <link rel="stylesheet" href="assets/css/loadingScreen.css">
+</head>
 
 <div id="container">
-<!-- Edit the letter attr to: N, E, T, F, L, I or X -->
-   <netflixintro letter="N">
+  <!-- Edit the letter attr to: N, E, T, F, L, I or X -->
+  <netflixintro letter="N">
     <div class="helper-1">
       <div class="effect-brush">
         <span class="fur-31"></span>
@@ -176,8 +175,9 @@
         <span class="fur-3"></span>
         <span class="fur-2"></span>
         <span class="fur-1"></span>
-       </div>
-     </div>
-    </netflixintro>
-  </div>
+      </div>
+    </div>
+  </netflixintro>
+</div>
+
 </html>
