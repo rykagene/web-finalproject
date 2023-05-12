@@ -176,10 +176,8 @@
         <span class="fur-3"></span>
         <span class="fur-2"></span>
         <span class="fur-1"></span>
-      </div>
-    </div>
-  </netflixintro>
-</div>
-
-
+       </div>
+     </div>
+    </netflixintro>
+  </div>
 </html>

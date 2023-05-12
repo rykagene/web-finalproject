@@ -1,11 +1,6 @@
-
-
-
-
-
-
 <!doctype html>
 <html lang="en">
+
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -22,14 +17,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     
-    <script src="assets/js/script.js"></script>
-    
+    <script src="assets/js/script.js"></script> 
 
-
-
-
-    <title>Activity</title>
+    <title>Netflix</title>
   </head>
+
 <style>
   .badge-dragging {
   opacity: 0.5;
@@ -44,10 +36,7 @@
   cursor: pointer;
 }
 .top-movies  {
-
   padding: 25px;
-
-
 }
     .image {
       transition: transform 0.2s;
@@ -56,8 +45,6 @@
       transform: scale(1.3);
       z-index: 1;
     }
-  
-
     </style>
 
   <script>
@@ -89,9 +76,6 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </span>
-  
-
-
                 </div>
               </form>
             
@@ -99,12 +83,14 @@
       <div id="suggestion_div">
 
       </div>
+
     <style>
     /* search icon */
       .ms-n5 {
     margin-left: -40px;
     color: gray;
 } 
+
     </style>
         </div>
        
@@ -127,20 +113,19 @@
       <!-- End of navbar -->
 
       <?php
-    $xml = new domdocument ("1.0"); 
-    $xml->load("BSIT3EG1G3.xml");
-    $netflixOriginals = $xml->getElementsByTagName("topNetflixOriginals");
-    
-    // Create an array of netflixOriginals nodes sorted by hoursViewed
-    $sortedNetflixOriginals = array();
-    foreach($netflixOriginals as $topNetflixOriginals) {
-      $hoursViewed = $topNetflixOriginals->getElementsByTagName("hoursViewed")->item(0)->nodeValue;
-      $sortedNetflixOriginals[$hoursViewed] = $topNetflixOriginals;
-    }
-    krsort($sortedNetflixOriginals);
-    $rank = 1;
-    ?>
+      $xml = new domdocument("1.0");
+      $xml->load("BSIT3EG1G3.xml");
+      $netflixOriginals = $xml->getElementsByTagName("topNetflixOriginals");
 
+      // Create an array of netflixOriginals nodes sorted by hoursViewed
+      $sortedNetflixOriginals = array();
+      foreach ($netflixOriginals as $topNetflixOriginals) {
+        $hoursViewed = $topNetflixOriginals->getElementsByTagName("hoursViewed")->item(0)->nodeValue;
+        $sortedNetflixOriginals[$hoursViewed] = $topNetflixOriginals;
+      }
+      krsort($sortedNetflixOriginals);
+      $rank = 1;
+      ?>
 
 <div class="container-fluid">
   
@@ -152,50 +137,50 @@
     <div id="carousel" class="carousel slide  mb-3" data-bs-ride="carousel">
       <div class="carousel-inner top-movies" role="listbox">
         <!-- Loop through movies and create cards -->
-        <?php 
-          $count = 0;
-          foreach($sortedNetflixOriginals as $hoursViewed => $topNetflixOriginals) {
-            // Extract movie data
-            $picture = $topNetflixOriginals->getElementsByTagName("picture")->item(0)->nodeValue;
-            $netflixTitle = $topNetflixOriginals->getElementsByTagName("netflixTitle")->item(0)->nodeValue;
-            $genre = $topNetflixOriginals->getElementsByTagName("genre")->item(0)->nodeValue;
-            $hoursViewed = $topNetflixOriginals->getElementsByTagName("hoursViewed")->item(0)->nodeValue;
-            $directedBy = $topNetflixOriginals->getElementsByTagName("directedBy")->item(0)->nodeValue;
-            $mainCast = $topNetflixOriginals->getElementsByTagName("mainCast")->item(0)->nodeValue;
-            $dateReleased = $topNetflixOriginals->getElementsByTagName("dateReleased")->item(0)->nodeValue;
-            $id = $topNetflixOriginals->getAttribute("id");
-            $top = $rank;
-            $rank++;
+        <?php
+        $count = 0;
+        foreach ($sortedNetflixOriginals as $hoursViewed => $topNetflixOriginals) {
+          // Extract movie data
+          $picture = $topNetflixOriginals->getElementsByTagName("picture")->item(0)->nodeValue;
+          $netflixTitle = $topNetflixOriginals->getElementsByTagName("netflixTitle")->item(0)->nodeValue;
+          $genre = $topNetflixOriginals->getElementsByTagName("genre")->item(0)->nodeValue;
+          $hoursViewed = $topNetflixOriginals->getElementsByTagName("hoursViewed")->item(0)->nodeValue;
+          $directedBy = $topNetflixOriginals->getElementsByTagName("directedBy")->item(0)->nodeValue;
+          $mainCast = $topNetflixOriginals->getElementsByTagName("mainCast")->item(0)->nodeValue;
+          $dateReleased = $topNetflixOriginals->getElementsByTagName("dateReleased")->item(0)->nodeValue;
+          $id = $topNetflixOriginals->getAttribute("id");
+          $top = $rank;
+          $rank++;
 
-            // Create movie card
-            if ($count % 6 == 0) {
-              echo '<div class="carousel-item';
-              if ($count == 0) {
-                echo ' active';
-              }
-              echo '"><div class="row">';
+          // Create movie card
+          if ($count % 6 == 0) {
+            echo '<div class="carousel-item';
+            if ($count == 0) {
+              echo ' active';
             }
-            ?>
-            <div class="col-6 col-md-4 col-lg-2">
-            <div class="card image rounded outline-0 border-0" data-genre="<?php echo $genre; ?>" data-hours-viewed="<?php echo $hoursViewed; ?>" data-directed-by="<?php echo $directedBy; ?>" data-main-cast="<?php echo $mainCast; ?>" data-date-released="<?php echo date('F j, Y', strtotime($dateReleased)); ?>" data-top="<?php echo $top; ?>">
+            echo '"><div class="row">';
+          }
+          ?>
+              <div class="col-6 col-md-4 col-lg-2">
+              <div class="card image rounded outline-0 border-0" data-genre="<?php echo $genre; ?>" data-hours-viewed="<?php echo $hoursViewed; ?>" data-directed-by="<?php echo $directedBy; ?>" data-main-cast="<?php echo $mainCast; ?>" data-date-released="<?php echo date('F j, Y', strtotime($dateReleased)); ?>" data-top="<?php echo $top; ?>">
 
 
 
-                <span id="topNumber"class="position-absolute top-0 start-70 translate-middle badge">#<?php echo $top;?></span>
-                <img class="card-img-top rounded-3" src="data:image;base64,<?php echo $picture; ?>" alt="<?php echo $netflixTitle; ?>">
-                <!-- Add movie data to data attributes -->
+                  <span id="topNumber"class="position-absolute top-0 start-70 translate-middle badge">#<?php echo $top; ?></span>
+                  <img class="card-img-top rounded-3" src="data:image;base64,<?php echo $picture; ?>" alt="<?php echo $netflixTitle; ?>">
+                  <!-- Add movie data to data attributes -->
               
+                </div>
               </div>
-            </div>
-            <?php
-            $count++;
-            if ($count % 6 == 0) {
-              echo '</div></div>';
-            }
-          }
-          if ($count % 6 != 0) {
-            echo '</div></div>';
-          }
+              <?php
+              $count++;
+              if ($count % 6 == 0) {
+                echo '</div></div>';
+              }
+        }
+        if ($count % 6 != 0) {
+          echo '</div></div>';
+        }
         ?>
       </div>
       <a class="carousel-control-prev " href="#carousel" role="button" data-bs-slide="prev">
@@ -224,9 +209,6 @@
     // time formatter
     var formattedHoursViewed = (hoursViewed >= 1e3 && hoursViewed < 1e6) ? (hoursViewed / 1e3).toLocaleString(undefined, {maximumFractionDigits:1}) + 'K' : (hoursViewed >= 1e6 && hoursViewed < 1e9) ? (hoursViewed / 1e6).toLocaleString(undefined, {maximumFractionDigits:1}) + 'M' : (hoursViewed >= 1e9) ? (hoursViewed / 1e9).toLocaleString(undefined, {maximumFractionDigits:1}) + 'B' : hoursViewed.toLocaleString();
 
-
-
-    
 // Create HTML to display movie details
 var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
           '<h1 id="top_title">' + netflixTitle + '</h1>' +
@@ -241,8 +223,6 @@ var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
     
     // Display movie details in movie details div
     $('#movie-details').hide().html(html).fadeIn("fast");
-
-    
     
     // Update body background image
    $('body').css('background-image', 'linear-gradient(90deg, rgba(0, 0, 0, 0.999) 40%, rgba(0,0,0,0) 90%, rgba(0,212,255,0) 100%), url(' + $(this).find('img').attr('src') + ')').fadeIn(1000);
@@ -253,9 +233,6 @@ var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
   $('.card').first().trigger('click');
  });
 
-
-
- 
 </script>
 
 <script>
@@ -289,23 +266,15 @@ var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
 // }
   </script>
 
+    <?php
 
-
-
-
-
-      
-
-    <?php 
-
-        include('createPage.php');
-        // include('update.php');
-        // include('delete.php');
-        ?>
+    include('createPage.php');
+    // include('update.php');
+    // include('delete.php');
+    ?>
     
     </div>
 
-    
 <!-- 
     <h1>NETFLIX</h1>
 <div class="wrapper">
@@ -371,15 +340,6 @@ var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
   </button>
 </div> -->
 
-
-  
-
-    
-  
-  
-
-
-
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
@@ -405,13 +365,7 @@ var html = '<h6 class="font-weight-bold"> Rank #' + top + '</h6>'+
     $('#filter2').click(function() {
       $('.displayCards').removeClass('col-md-4').addClass('col-md-12',1000);
     });
-    });
-
-
-  
-      
+    });  
     </script>
-    
-
   </body>
 </html>
