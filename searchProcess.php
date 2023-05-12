@@ -160,10 +160,10 @@ text-decoration: underline;
       <h4 class="card-title font-weight-bold "><?php echo $netflixTitle; ?></h4>
       <p class="card-text"><?php echo $genre; ?></p>
       
-            <button class="accordion-trigger btn btn-danger" type="button" data-bs-toggle="collapse"> More Details</button>
+            <button class="btn btn-danger" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1"> More Details</button>
       
-            <div class="accordion-content collapse show" style="display:none">
-              <p></p>
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+              <p></p> 
               <p class="card-text">Hours Viewed: <?php echo $hoursViewed . ' views'?></p>
               <p class="card-text">Directed by: <?php echo $directedBy; ?></p>
               <p class="card-text">Cast: <?php echo $mainCast; ?></p>
