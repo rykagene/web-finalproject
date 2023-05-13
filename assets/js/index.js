@@ -72,7 +72,7 @@ $(document).ready(function () {
           $(this).find("img").attr("src") +
           ")"
       )
-      .fadeIn(1000);
+      .fadeIn("fast");
   });
 
   // Get the first card and trigger a click event on it
@@ -117,10 +117,8 @@ $(document).ready(function () {
            
             if (http.readyState == 4 && http.status == 200) {
  
-                $("#suggestion_div").html(http.responseText); 
-                
-           
-
+                document.getElementById("suggestion_div").innerHTML = http.responseText; //set the value on suggestion list.
+                document.getElementById("suggestion_div").style.display = "block"; //display suggestions_div 
 
             } else {
                 $("#suggestion_div").html("Loading...");

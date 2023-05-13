@@ -10,7 +10,8 @@
                
                 if (http.readyState == 4 && http.status == 200) {
      
-                    $("#suggestion_div").html(http.responseText); 
+                    document.getElementById("suggestion_div").innerHTML = http.responseText; //set the value on suggestion list.
+                document.getElementById("suggestion_div").style.display = "none"; //display suggestions_div 
                     
                 } else {
                     $("#suggestion_div").html("Loading...");
