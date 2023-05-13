@@ -65,7 +65,7 @@
       <div class="col">
 
         <div class="d-flex justify-content-end">
-          <a href="index.php" type="button" class="btn btn-danger m-1"><i class="fa-solid fa-home"></i> Home</a>
+          <a href="home.php" type="button" class="btn btn-danger m-1"><i class="fa-solid fa-home"></i> Home</a>
           <!-- CREATE -->
           <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#create"><i
               class="fa-solid fa-plus"></i> Add</button> &nbsp;
