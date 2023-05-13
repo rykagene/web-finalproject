@@ -98,45 +98,45 @@ foreach ($netflixOriginals as $topNetflixOriginals) {
 
 
               <!-- genre div -->
-              <div class="form-floating mb-3">
-                <div class="mb-3">
-                  <input type="hidden" id="selected-genres-input" class="d-none" name="selectedGenres" required="required">
+          <div class="form-floating mb-3">
+            <div class="mb-3">
+              <input type="hidden" id="selected-genres-input" class="d-none" name="selectedGenres" required="required">
 
-                  <label for="selected-genres" class="form-label">Genres:</label>
-                  <div id="selected-genres" class="form-control">
-                    <button class="btn float-end outline-0 border-0" type="button" id="resetBtn"><i
-                        class="fa-solid fa-xmark"></i></button>
-                  </div>
-
-                </div>
-                <div class="mb-3">
-                  <div id="genres" class="">
-                    <?php
-                    $genres = array(
-                      "Drama",
-                      "Thriller",
-                      "Comedy",
-                      "Fantasy",
-                      "Romance",
-                      "Science Fiction",
-                      "Adventure",
-                      "Sports",
-                      "Action",
-                      "Western",
-                      "Horror",
-                      "Musical",
-                      "Mystery"
-                    );
-
-                    foreach ($genres as $genre) {
-                      echo '<span class="badge rounded-pill bg-primary me-1" data-value="' . $genre . '">' . $genre . '</span>';
-                    }
-                    ?>
-
-                  </div>
-                </div>
+              <label for="selected-genres" class="form-label">Genres:</label>
+              <div id="selected-genres" class="form-control">
+                <button class="btn float-end outline-0 border-0" type="button" id="resetBtn"><i
+                    class="fa-solid fa-xmark"></i></button>
               </div>
-              <!-- end genre div -->
+
+            </div>
+            <div class="mb-3">
+              <div id="genres" class="">
+                <?php
+                $genres = array(
+                  "Drama",
+                  "Thriller",
+                  "Comedy",
+                  "Fantasy",
+                  "Romance",
+                  "Science Fiction",
+                  "Adventure",
+                  "Sports",
+                  "Action",
+                  "Western",
+                  "Horror",
+                  "Musical",
+                  "Mystery"
+                );
+
+                foreach ($genres as $genre) {
+                  echo '<span class="badge rounded-pill bg-primary me-1" data-value="' . $genre . '">' . $genre . '</span>';
+                }
+                ?>
+
+              </div>
+            </div>
+          </div>
+          <!-- end genre div -->
 
           </div>
           <div class="card-footer">
@@ -161,10 +161,11 @@ foreach ($netflixOriginals as $topNetflixOriginals) {
 
 <?php }
 ?>
-<!--  END OF CREATE MODAL-->
+
 
 
 <!-- library for table sorting -->
+<script src="assets/js/update.js"></script>
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
