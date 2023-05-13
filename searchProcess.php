@@ -15,7 +15,7 @@
     <!-- Script -->
     <script src="assets/bootstrap/js/jquery-3.6.0.min.js"></script>
     <script src="assets/bootstrap/js/jquery-ui.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/index.js"></script>
 
     <title>Top Netflix Originals</title>
   <body class="">
@@ -23,6 +23,7 @@
 <br>
 
 <a><i onclick="history.back()"class="fa-solid fa-arrow-left fa-2xl m-4" style="color: #ffffff; cursor:pointer"></i></a><br><br>
+
 <div class="container">
    
    <h1 id="top_title" class="text-left"><b>Search</b></h1>
@@ -30,13 +31,13 @@
        <div class="col">
   
    <div class="d-flex justify-content-end">
-   <a href="index.php" type="button" class="btn btn-danger"><i class="fa-solid fa-home"></i> Home</a>
-   &nbsp; &nbsp; &nbsp; 
+   <a href="home.php" type="button" class="btn btn-danger"><i class="fa-solid fa-home"></i> Home</a>
+    &nbsp; &nbsp; 
     
      <!-- SEARCH --> 
       <form action="searchProcess.php" method="POST">
                <div class="input-group">
-               <input id="searchBox" type="text" name="code" class="form-control bg-dark rounded-pill border-0 text-white" onkeyup="showHint(this.value)" autocomplete="off" placeholder="Search movie/series title">
+               <input id="searchBox" type="search" name="code" class="form-control bg-dark rounded-pill border-0 text-white" onkeyup="showHint(this.value)" autocomplete="off" placeholder="Search movie/series title" required="required">
 
    <span class="input-group-append">
                    <button class="btn btn-secondary bg-dark border-0 border rounded-pill ms-n5" type="button">
@@ -59,7 +60,7 @@
                 // variable for identifying record
                 $flag = 0;
 
-                // get the user input from searchbox in the index.php
+                // get the user input from searchbox in the home.php
                 $search = $_POST["code"];
                 
 
@@ -74,6 +75,7 @@
                     $mainCast = $topNetflixOriginals->getElementsByTagName("mainCast")->item(0)->nodeValue;
                     $dateReleased = $topNetflixOriginals->getElementsByTagName("dateReleased")->item(0)->nodeValue;
                     $id = $topNetflixOriginals->getAttribute("id");
+
 
                     // if you are looking for CONTAINS any details from the record 
                     if (
@@ -101,7 +103,7 @@
       
                     <div class="collapse multi-collapse" id="multiCollapseExample1">
                     <p></p> 
-                    <p class="card-text">Hours Viewed: <?php echo $hoursViewed . ' views'?></p>
+                    <p class="card-text">Hours Viewed: <?php echo $hoursViewed . ' hours views'?></p>
                     <p class="card-text">Directed by: <?php echo $directedBy; ?></p>
                     <p class="card-text">Cast: <?php echo $mainCast; ?></p>
                     <p class="card-text">Date Released: <?php echo $dateReleased; ?></p>

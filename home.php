@@ -22,7 +22,6 @@
   <script rel="stylesheet" src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-  <script src="assets/js/script.js"></script>
   <script src="assets/js/index.js"></script>
 
 
@@ -32,33 +31,34 @@
 
 <body>
   <div class="container">
+
     <!-- navbar -->
     <div class="row pt-5">
       <div class="col-4 d-flex justify-content-center mt-4">
         <img class="" width="200px" src="logo.png" alt="netflix logo">
       </div>
+
+      <!-- SEARCH -->
       <div class="col-4 pt-5">
-        <!-- SEARCH -->
         <form action="searchProcess.php" method="POST">
           <div class="input-group">
-            <input id="searchBox" type="text" name="code" class="form-control bg-dark rounded-pill border-0 text-white"
-              onkeyup="showHint(this.value)" required="required" autocomplete="off"
-              placeholder="Search any movie/series title">
-
-            <span class="input-group-append">
-              <button class="btn btn-secondary bg-dark border-0 border rounded-pill ms-n5" type="button">
-                <i class="fa fa-search"></i>
-              </button>
-            </span>
+              <input id="searchBox" type="text" name="code" class="form-control bg-dark rounded outline-o border-0 text-white" onkeyup="showHint(this.value)" required="required" autocomplete="off" placeholder="Search any movie/series title"/>
+              <span class="input-group-append">
+                <button class="btn btn-secondary bg-dark border-0 border rounded ms-n5" type="button submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+               <!-- SEARCH SUGGESTION RESULT -->
+      <div id="suggestion_div" class="position-absolute top-50 start-25 translate-bottom w-100 m-3" style="left: -12pt;">
+      </div>
           </div>
+         
         </form>
-        <!-- SEARCH SUGGESTION RESULT -->
-        <div id="suggestion_div">
 
-        </div>
       </div>
 
-
+      
+      
       <div class="col">
         <div class="d-flex justify-content-start mt-5">
           <!-- CREATE -->
@@ -76,6 +76,9 @@
       </div>
     </div>
     <!-- End of navbar -->
+
+
+
     <?php
     $xml = new domdocument("1.0");
     $xml->load("BSIT3EG1G3.xml");
